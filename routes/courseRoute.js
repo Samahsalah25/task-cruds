@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const { createCourse ,getCourseById ,deleteCourse  ,enrollCourse ,getAvailableCourses ,updateTitle ,updateDuration,updateCost ,updateOffered ,addStudent ,removeStudent} = require("../controllers/courseController");
+const { createCourse ,getCourseById ,deleteCourse  ,getAllCourses ,enrollCourse ,getAvailableCourses ,updateTitle ,updateDuration,updateCost ,updateOffered ,addStudent ,removeStudent} = require("../controllers/courseController");
 
 // POST /api/courses
+router.get('/getAllcourses' ,getAllCourses)
 router.get("/getcourse/:id", getCourseById);
 router.post("/enroll/:course_id/:student_id", enrollCourse);
 

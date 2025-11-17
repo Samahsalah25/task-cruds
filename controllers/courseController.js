@@ -226,3 +226,21 @@ exports.removeStudent = async (req, res) => {
 };
 
 
+// get all courses
+exports.getAllCourses = async (req, res) => {
+  try {
+    const courses = await Course.find()
+      .populate("instructorId", "name email role")
+      .populate("students", "name email role");
+
+    res.json({
+      success: true,
+      count: courses.length,
+      courses
+    });
+
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
