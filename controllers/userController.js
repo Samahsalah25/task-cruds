@@ -14,7 +14,7 @@ exports.getAllUserCourses = async (req, res) => {
     // جلب الكورسات اللي المستخدم trainee فيها
     const traineeCourses = await Course.find({ students: userId })
       .populate("instructorId", "name email role")
-      .populate("student", "name email role");
+      .populate("students", "name email role");
 
     // دمج النتيجة وإزالة التكرارات لو فيه
     const allCoursesMap = new Map();
