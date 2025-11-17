@@ -33,7 +33,7 @@ exports.getCourseById = async (req, res) => {
 
     const course = await Course.findById(courseId)
       .populate("instructorId", "name email role")  // Optional: عشان تجيب بيانات المعلمين
-      .populate("student", "name email role");    // Optional: عشان تجيب بيانات الطلاب
+      .populate("students", "name email role");    // Optional: عشان تجيب بيانات الطلاب
 
     if (!course) {
       return res.status(404).json({ message: "Course not found" });
